@@ -1,0 +1,5 @@
+syntax: glob
+*.pyc
+*.so
+build
+lib/python_corosync.egg-info
