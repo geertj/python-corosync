@@ -341,7 +341,7 @@ py_cpg_dispatch(PyObject *self, PyObject *args)
 {
     int ret;
     cpg_handle_t handle;
-    cpg_dispatch_t dispatch;
+    cs_dispatch_flags_t dispatch;
 
     if (!PyArg_ParseTuple(args, "li", &handle, &dispatch))
 	return NULL;
@@ -462,24 +462,6 @@ typedef struct
     int code;
     const char *name;
 } py_cpg_error_t;
-
-static py_cpg_error_t py_cpg_errors[] =
-{
-    { CPG_OK, "CPG_OK" },
-    { CPG_ERR_LIBRARY, "CPG_ERR_LIBRARY" },
-    { CPG_ERR_TIMEOUT, "CPG_ERR_TIMEOUT" },
-    { CPG_ERR_TRY_AGAIN, "CPG_ERR_TRY_AGAIN" },
-    { CPG_ERR_INVALID_PARAM, "CPG_ERR_INVALID_PARAM" },
-    { CPG_ERR_NO_MEMORY, "CPG_ERR_NO_MEMORY" },
-    { CPG_ERR_BAD_HANDLE, "CPG_ERR_BAD_HANDLE" },
-    { CPG_ERR_ACCESS, "CPG_ERR_ACCESS" },
-    { CPG_ERR_NOT_EXIST, "CPG_ERR_NOT_EXIST" },
-    { CPG_ERR_EXIST, "CPG_ERR_EXIST" },
-    { CPG_ERR_NOT_SUPPORTED, "CPG_ERR_NOT_SUPPORTED" },
-    { CPG_ERR_SECURITY, "CPG_ERR_SECURITY" },
-    { CPG_ERR_TOO_MANY_GROUPS, "CPG_ERR_TOO_MANY_GROUPS" },
-    { 0, NULL }
-};
 
 static PyMethodDef py_cpg_methods[] = 
 {
