@@ -64,7 +64,7 @@ class CPG(Service):
 	    raise Error, 'Service not started.'
 	return _cpg.fd_get(self.m_handle)
 
-    def _dispatch(self, type=DISPATCH_ALL):
+    def dispatch(self, type=DISPATCH_ALL):
 	"""Dispatch events."""
 	if self.m_handle is None:
 	    raise Error, 'Service not started.'

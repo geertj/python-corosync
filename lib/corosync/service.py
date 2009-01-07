@@ -26,6 +26,6 @@ class Service(object):
 	"""Return a file descriptor that can be used to wait for events."""
 	raise NotImplementedError
 
-    def _dispatch(self, type=None):
+    def dispatch(self, type=None):
 	"""Dispatch events for this service."""
 	raise NotImplementedError

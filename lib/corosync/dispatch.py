@@ -57,7 +57,7 @@ class ThreadedDispatcher(Thread):
 		continue  # timeout
 	    for service in self.m_services:
 		if service.fileno() in ret[0]:
-		    service._dispatch()
+		    service.dispatch()
 	for service in self.m_services:
 	    if service.active():
 		service.stop()
