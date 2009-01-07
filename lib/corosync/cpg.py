@@ -21,7 +21,7 @@ for symbol in dir(_cpg):
 class CPG(Service):
     """Closed process group.
 
-    This object provides an object oriented API to AIS closed process groups.
+    This object provides an object oriented API to the AIS closed process groups.
     """
 
     def __init__(self, name):
@@ -48,7 +48,8 @@ class CPG(Service):
 	"""Deactivate the process group. This will stop the delivery of
 	messages."""
 	if not self.m_dispatch:
-	    _cpg.leave(self.m_handle, self.m_name)
+	    # The following line crashes the executive...
+	    #_cpg.leave(self.m_handle, self.m_name)
 	    _cpg.finalize(self.m_handle)
 	    self.m_handle = None
 	self.m_stop = True
@@ -65,6 +66,8 @@ class CPG(Service):
 
     def _dispatch(self, type=DISPATCH_ALL):
 	"""Dispatch events."""
+	if self.m_handle is None:
+	    raise Error, 'Service not started.'
 	self.m_dispatch = True
 	_cpg.dispatch(self.m_handle, _cpg.DISPATCH_ALL)
 	self.m_dispatch = False
