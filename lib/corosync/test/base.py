@@ -89,7 +89,7 @@ class BaseTest(object):
 	cls.c_copied_source = False
 	if cls.cluster_enabled():
 	    cls._check_cluster_nodes()
-	    cls._copy_source_trees()
+	    cls._copy_source_tree()
 
     @classmethod
     def topdir(cls):
@@ -116,7 +116,7 @@ class BaseTest(object):
 	    ret = ssh.expect(['ping', 'passphrase', 'password', pexpect.TIMEOUT, pexpect.EOF])
 	    if ret > 0:
 		m = 'Configured cluster node %s not reachable through ssh.\n' % node
-		m += 'Please ensure that the current use can ssh to that node without a password.'
+		m += 'Please ensure that the current user can ssh to that node without a password.'
 		raise SkipTest, m
 	    ssh.close()
 	    ssh = pexpect.spawn('ssh %s service corosync status' % node, timeout=5)
@@ -127,7 +127,7 @@ class BaseTest(object):
 		raise SkipTest, m
 
     @classmethod
-    def _copy_source_trees(cls):
+    def _copy_source_tree(cls):
 	"""Copy the python-corosync source tree to the remote cluster
 	nodes."""
 	for node in cls.cluster_nodes():
