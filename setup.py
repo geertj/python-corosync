@@ -29,7 +29,7 @@ setup(
     description = 'Corosync bindings for Python',
     author = 'Geert Jansen',
     author_email = 'geert@boskant.nl',
-    url = 'http://code.google.com/p/python-corosync',
+    url = 'https://github.com/geertj/python-corosync',
     license = 'MIT',
     classifiers = ['Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
